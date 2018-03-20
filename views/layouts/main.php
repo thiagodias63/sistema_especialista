@@ -58,7 +58,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Trabalho de Ia<?= date('Y') ?></p>
+        <p class="pull-left">&copy; Trabalho de I.A <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
