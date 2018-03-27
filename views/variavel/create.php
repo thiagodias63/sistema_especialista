@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Variavel */
 
-$this->title = 'Create Variavel';
+$this->title = 'Nova Variavel';
 $this->params['breadcrumbs'][] = ['label' => 'Variavels', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

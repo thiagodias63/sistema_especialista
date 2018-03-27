@@ -1,53 +1,31 @@
 <?php
 
 /* @var $this yii\web\View */
-
-$this->title = 'My Yii Application';
+use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
+use kolyunya\yii2\widgets\bootstrap\RadioList;
+$this->title = 'Trabalho de Inteligência Artificial';
 ?>
 <div class="site-index">
-
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
+    <?php $form = ActiveForm::begin(); ?>
+    <div class="container">
+        <h3>Selecione o formulario</h3>
+        <?php $items = ArrayHelper::map($formulario->find()->all(),'cod_formulario','desc_formulario') ?>
+        <?=  $form->field($formulario, 'cod_formulario')->radioList($items, ['class'=>'radio input-lg'])->label(''); ?>        
+        <div class="form-group">
+            <?= Html::submitButton('Começar', ['class' => 'btn btn-success']) ?>
         </div>
-
     </div>
+
+    <?php ActiveForm::end(); ?>
 </div>
+<?php /* <?php foreach($formulario->find()->all() as $formulario){ ?>
+<?= $form->field($formulario, 'cod_formulario')->radio(
+[//'value' => $formulario->cod_formulario,
+'label' => $formulario->desc_formulario,]); ?>
+<?php } */ ?>
+<!-- <label for="form-<?= $formulario->cod_formulario ?>"> <?= $formulario->desc_formulario ?></label>
+<input type="radio" name="form" id="form-<?= $formulario->cod_formulario ?>">
+<br> -->
+<?php // $form->field($formulario, 'cod_formulario')->inline()->radioList($formularios); ?>

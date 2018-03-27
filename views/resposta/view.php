@@ -29,8 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'cod_resposta',
+            'desc_resposta',
             'reposta_certa',
-            'cod_variavel',
             'cod_pergunta',
         ],
     ]) ?>

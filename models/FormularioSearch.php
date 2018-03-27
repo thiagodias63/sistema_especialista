@@ -19,7 +19,7 @@ class FormularioSearch extends Formulario
     {
         return [
             [['cod_formulario'], 'integer'],
-            [['desc_formulario'], 'safe'],
+            [['desc_formulario','diagnostico_final'], 'safe'],
         ];
     }
 
@@ -56,13 +56,14 @@ class FormularioSearch extends Formulario
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        $query->joinWith('variavel');
         // grid filtering conditions
         $query->andFilterWhere([
             'cod_formulario' => $this->cod_formulario,
         ]);
 
-        $query->andFilterWhere(['like', 'desc_formulario', $this->desc_formulario]);
+        $query->andFilterWhere(['like', 'desc_formulario', $this->desc_formulario])
+        ->andFilterWhere(['like', 'variavel.desc_variavel', $this->diagnostico_final]);
 
         return $dataProvider;
     }

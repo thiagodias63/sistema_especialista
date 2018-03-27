@@ -18,8 +18,8 @@ class RespostaSearch extends Resposta
     public function rules()
     {
         return [
-            [['cod_resposta', 'cod_variavel', 'cod_pergunta'], 'integer'],
-            [['reposta_certa'], 'safe'],
+            [['cod_resposta', ], 'integer'],
+            [['desc_resposta','cod_pergunta', 'reposta_certa'], 'safe'],
         ];
     }
 
@@ -56,16 +56,15 @@ class RespostaSearch extends Resposta
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        $query->joinWith('pergunta');
         // grid filtering conditions
         $query->andFilterWhere([
-            'cod_resposta' => $this->cod_resposta,
-            'cod_variavel' => $this->cod_variavel,
-            'cod_pergunta' => $this->cod_pergunta,
+            'cod_resposta' => $this->cod_resposta
         ]);
 
-        $query->andFilterWhere(['like', 'reposta_certa', $this->reposta_certa]);
-
+        $query->andFilterWhere(['like', 'desc_resposta', $this->desc_resposta])
+            ->andFilterWhere(['like', 'reposta_certa', $this->reposta_certa])
+            ->andFilterWhere(['like', 'pergunta.desc_pergunta', $this->cod_pergunta]);
         return $dataProvider;
     }
 }

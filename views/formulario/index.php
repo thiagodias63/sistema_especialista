@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Formulario', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Criar Formulario', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,8 +25,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'cod_formulario',
+            //'cod_formulario',
             'desc_formulario',
+            [
+                'attribute' => 'diagnostico_final',
+                'value' => 'variavel.desc_variavel'
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

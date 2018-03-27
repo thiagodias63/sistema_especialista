@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'cod_formulario',
             'desc_formulario',
+            'diagnostico_final',
         ],
     ]) ?>
 

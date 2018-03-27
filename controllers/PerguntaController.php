@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Pergunta;
+use app\models\Variavel;
+use app\models\Formulario;
 use app\models\PerguntaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -65,13 +67,16 @@ class PerguntaController extends Controller
     public function actionCreate()
     {
         $model = new Pergunta();
-
+        $formulario = Formulario::find()->all();
+        $variavel = Variavel::find()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->cod_pergunta]);
         }
 
         return $this->render('create', [
-            'model' => $model,
+            'model' => $model,            
+            'formulario' => $formulario,
+            'variavel' => $variavel,
         ]);
     }
 
@@ -85,13 +90,16 @@ class PerguntaController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $formulario = Formulario::find()->all();
+        $variavel = Variavel::find()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->cod_pergunta]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'formulario' => $formulario,
+            'variavel' => $variavel,
         ]);
     }
 

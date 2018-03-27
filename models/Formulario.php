@@ -9,7 +9,9 @@ use Yii;
  *
  * @property int $cod_formulario
  * @property string $desc_formulario
+ * @property int $diagnostico_final
  *
+ * @property Variavel $diagnosticoFinal
  * @property Pergunta[] $perguntas
  */
 class Formulario extends \yii\db\ActiveRecord
@@ -28,8 +30,10 @@ class Formulario extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['desc_formulario'], 'required'],
+            [['desc_formulario', 'diagnostico_final'], 'required'],
+            [['diagnostico_final'], 'integer'],
             [['desc_formulario'], 'string', 'max' => 200],
+            [['diagnostico_final'], 'exist', 'skipOnError' => true, 'targetClass' => Variavel::className(), 'targetAttribute' => ['diagnostico_final' => 'cod_variavel']],
         ];
     }
 
@@ -39,9 +43,18 @@ class Formulario extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'cod_formulario' => 'Cod Formulario',
-            'desc_formulario' => 'Desc Formulario',
+            'cod_formulario' => 'Codigo do Formulario',
+            'desc_formulario' => 'Titulo do Formulario',
+            'diagnostico_final' => 'Diagnostico Final',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getVariavel()
+    {
+        return $this->hasOne(Variavel::className(), ['cod_variavel' => 'diagnostico_final']);
     }
 
     /**

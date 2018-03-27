@@ -17,9 +17,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cod_resposta') ?>
 
-    <?= $form->field($model, 'reposta_certa') ?>
+    <?= $form->field($model, 'desc_resposta') ?>
 
-    <?= $form->field($model, 'cod_variavel') ?>
+    <?= $form->field($model, 'reposta_certa') ?>
 
     <?= $form->field($model, 'cod_pergunta') ?>
 

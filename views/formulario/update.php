@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Formulario */
 
-$this->title = 'Update Formulario: {nameAttribute}';
+$this->title = 'Alterar Formulario:'.$model->desc_formulario;
 $this->params['breadcrumbs'][] = ['label' => 'Formularios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->cod_formulario, 'url' => ['view', 'id' => $model->cod_formulario]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Alterar';
 ?>
 <div class="formulario-update">
 
@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'variavel' => $variavel
     ]) ?>
 
 </div>

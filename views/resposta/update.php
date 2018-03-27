@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Resposta */
 
-$this->title = 'Update Resposta: {nameAttribute}';
+$this->title = 'Alterar Resposta: '.$model->desc_resposta;
 $this->params['breadcrumbs'][] = ['label' => 'Respostas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->cod_resposta, 'url' => ['view', 'id' => $model->cod_resposta]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Alterar';
 ?>
 <div class="resposta-update">
 
@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'pergunta' => $pergunta,
     ]) ?>
 
 </div>

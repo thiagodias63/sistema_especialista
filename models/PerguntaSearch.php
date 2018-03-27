@@ -18,8 +18,8 @@ class PerguntaSearch extends Pergunta
     public function rules()
     {
         return [
-            [['cod_pergunta', 'ordem', 'cod_formulario', 'cod_variavel'], 'integer'],
-            [['proximo_no'], 'safe'],
+            [['cod_pergunta', 'ordem',], 'integer'],
+            [['desc_pergunta', 'proximo_no', 'cod_formulario', 'cod_variavel'], 'safe'],
         ];
     }
 
@@ -56,17 +56,18 @@ class PerguntaSearch extends Pergunta
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        $query->joinWith(['formulario','variavel']);
+        
         // grid filtering conditions
         $query->andFilterWhere([
             'cod_pergunta' => $this->cod_pergunta,
             'ordem' => $this->ordem,
-            'cod_formulario' => $this->cod_formulario,
-            'cod_variavel' => $this->cod_variavel,
         ]);
 
-        $query->andFilterWhere(['like', 'proximo_no', $this->proximo_no]);
-
+        $query->andFilterWhere(['like', 'desc_pergunta', $this->desc_pergunta])
+            ->andFilterWhere(['like', 'proximo_no', $this->proximo_no])
+            ->andFilterWhere(['like', 'formulario.desc_formulario', $this->cod_formulario])
+            ->andFilterWhere(['like', 'variavel.desc_variavel', $this->cod_variavel]);
         return $dataProvider;
     }
 }

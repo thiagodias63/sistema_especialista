@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Formulario;
+use app\models\Variavel;
 use app\models\FormularioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -65,13 +66,14 @@ class FormularioController extends Controller
     public function actionCreate()
     {
         $model = new Formulario();
-
+        $variavel = Variavel::find()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->cod_formulario]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'variavel' => $variavel
         ]);
     }
 
@@ -85,6 +87,7 @@ class FormularioController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $variavel = Variavel::find()->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->cod_formulario]);
@@ -92,6 +95,7 @@ class FormularioController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'variavel' => $variavel
         ]);
     }
 

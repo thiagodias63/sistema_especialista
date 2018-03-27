@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Pergunta */
 
-$this->title = 'Create Pergunta';
+$this->title = 'Nova Pergunta';
 $this->params['breadcrumbs'][] = ['label' => 'Perguntas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -16,6 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'formulario' => $formulario,
+        'variavel' => $variavel,
     ]) ?>
 
 </div>

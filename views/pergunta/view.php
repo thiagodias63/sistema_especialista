@@ -29,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'cod_pergunta',
+            'desc_pergunta:ntext',
             'ordem',
             'proximo_no',
             'cod_formulario',

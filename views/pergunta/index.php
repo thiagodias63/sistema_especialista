@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Pergunta', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nova Pergunta', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,11 +25,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'cod_pergunta',
-            'ordem',
-            'proximo_no',
-            'cod_formulario',
-            'cod_variavel',
+            //'cod_pergunta',
+            //'ordem',
+            /*[
+                'attribute' => 'proximo_no',
+                'value' => function($model){ return $model->proximo_no == 0 ? 'E' : 'Ou';},
+            ],*/
+            [
+                'attribute' => 'cod_formulario',
+                'value' => 'formulario.desc_formulario'
+            ],
+            [
+                'attribute' => 'cod_variavel',
+                'value' => 'variavel.desc_variavel'
+            ],
+            'desc_pergunta:ntext',
+            //'cod_variavel',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

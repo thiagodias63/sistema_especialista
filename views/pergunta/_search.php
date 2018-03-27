@@ -17,13 +17,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cod_pergunta') ?>
 
+    <?= $form->field($model, 'desc_pergunta') ?>
+
     <?= $form->field($model, 'ordem') ?>
 
     <?= $form->field($model, 'proximo_no') ?>
 
     <?= $form->field($model, 'cod_formulario') ?>
 
-    <?= $form->field($model, 'cod_variavel') ?>
+    <?php // echo $form->field($model, 'cod_variavel') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

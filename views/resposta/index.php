@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Resposta', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nova Resposta', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -24,12 +24,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'cod_resposta',
-            'reposta_certa',
-            'cod_variavel',
-            'cod_pergunta',
-
+            //'cod_resposta',
+            [
+                'attribute' => 'pergunta.cod_formulario',
+                'value'=>'pergunta.formulario.desc_formulario',
+            ],
+            [
+                'attribute'=>'cod_pergunta',
+                'value'=>'pergunta.desc_pergunta',
+            ],
+            'desc_resposta',
+            [
+                //'attribute' => 'reposta_certa',
+                'value' => function($model){ return $model->reposta_certa == 0 ? 'Não' : 'Sim';},
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

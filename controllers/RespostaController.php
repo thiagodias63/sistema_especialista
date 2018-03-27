@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Resposta;
+use app\models\Pergunta;
 use app\models\RespostaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -65,13 +66,14 @@ class RespostaController extends Controller
     public function actionCreate()
     {
         $model = new Resposta();
-
+        $pergunta = Pergunta::find()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->cod_resposta]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'pergunta' => $pergunta
         ]);
     }
 
@@ -85,13 +87,14 @@ class RespostaController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $pergunta = Pergunta::find()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->cod_resposta]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'pergunta' => $pergunta
         ]);
     }
 
